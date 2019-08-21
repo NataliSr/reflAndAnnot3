@@ -5,7 +5,7 @@ import java.lang.reflect.Field;
 
 public class Serializer {
 
-    public static void serializerToFile(Object o, File file) {
+    public static void serializerToFile(Object o, File file) throws FileNotFoundException, IllegalAccessException {
         try (PrintWriter writer = new PrintWriter(file)) {
             Field[] fields = o.getClass().getDeclaredFields();
             for (Field field : fields) {
@@ -17,7 +17,7 @@ public class Serializer {
                 }
             }
         } catch (IOException | IllegalAccessException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 

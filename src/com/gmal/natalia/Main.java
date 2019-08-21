@@ -9,7 +9,11 @@ public class Main {
         Cat cat = new Cat("Murka", "red", 3);
 
         File file = new File("cat.txt");
-        Serializer.serializerToFile(cat, file);
+        try {
+            Serializer.serializerToFile(cat, file);
+        } catch (FileNotFoundException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
 
         Cat cat2 = null;
         try {
